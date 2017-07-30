@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/sablon.xhtml">
+	
+	
+	<ui:define name="content">
+		
+		<div class = "div_anasayfa_icerik">
+			
+			
+			<h:outputText value="#{employeeManagedBean.infoMessage}"
+				rendered="#{not empty employeeManagedBean.infoMessage}"
+			/>
+			
+			<h:message for="calisanInputID_ekle"/>
+			<br/>
+			<h:message for="calisanInputID_sil"/>
+			<br/>
+			<h:message for="calisanInputID_guncelle"/>
+			<br/>
+			<h:message for="calisanInputResim"></h:message>
+			
+			<h:form enctype="multipart/form-data">  <!-- EKLEME BOLUMU -->
+			
+				<h:dataTable
+					headerClass="anasayfa_tablo_form"
+				>
+				
+					<h:column>
+					
+						<f:facet name="header">
+							RESIM
+							<br/>
+							<h:inputFile value = "#{employeeManagedBean.employeeImage}"
+								style= " width:100px"
+								id="calisanInputResim"	
+							>
+										<f:validator validatorId="resim_validator"/>					
+							</h:inputFile>
+							
+						</f:facet>
+						
+					</h:column>
+				
+				
+					<h:column>
+						<f:facet name="header">
+							TC NO
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeID}" 
+								style= " width:50px"
+								id = "calisanInputID_ekle"
+							>
+								<f:validator validatorId="ID_validator"/>
+							</h:inputText>
+						</f:facet>
+					</h:column>
+				
+				
+					<h:column>
+						<f:facet name="header">
+							ISIM
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeName}" 
+								style= " width:50px"
+							/>
+						</f:facet>
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							SOYISIM
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeSurname}" 
+								style= " width:80px"
+							/>
+						</f:facet>
+					</h:column>
+					
+					
+					<h:column>							
+						<f:facet name="header">
+							MAAS
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeSalary}" 
+								style= " width:50px"
+							/>
+						</f:facet>	
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							<h:commandButton
+								value="EKLE"
+								action="#{employeeManagedBean.yeniCalisanEkle()}"
+							/>
+
+						</f:facet>	
+					</h:column>
+				
+				</h:dataTable>
+			
+			</h:form>
+			
+			
+			
+			<br/><br/><br/>
+			<h:form>	<!-- SILME BOLUMU -->
+				
+				<h:dataTable>
+				
+					<h:column>
+						<f:facet name="header">
+						
+							TC NO
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeID}"
+								style= " width:100px"
+								id = "calisanInputID_sil"					
+							>
+								<f:validator validatorId="ID_validator"/>
+								
+							</h:inputText>
+
+						</f:facet>
+						
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+						
+							<h:commandButton
+								value="SİL"
+								action="#{employeeManagedBean.calisanSil()}"
+							/>
+						
+						</f:facet>
+					
+					</h:column>
+				
+				</h:dataTable>
+				
+			</h:form>   
+			
+			<br/><br/><br/>
+			<h:form>	<!-- GUNCELLE BOLUMU -->
+				
+				ID ve guncellemek istediginiz alan/alanlari giriniz.
+				<h:dataTable>
+				
+					<h:column>
+						<f:facet name="header">
+						
+							TC NO
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeID}"
+								style= " width:100px"
+								id = "calisanInputID_guncelle"							
+							>
+								<f:validator validatorId="ID_validator"/>
+							</h:inputText>
+							
+						</f:facet>	
+					</h:column>		
+					
+					
+					<h:column>
+						<f:facet name="header">
+							ISIM
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeName}" 
+								style= " width:50px"
+							/>
+						</f:facet>
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							SOYISIM
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeSurname}" 
+								style= " width:80px"
+							/>
+						</f:facet>
+					</h:column>
+					
+					
+					<h:column>							
+						<f:facet name="header">
+							MAAS
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeSalary}" 
+								style= " width:50px"
+							/>
+						</f:facet>	
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							<h:commandButton
+								value="GUNCELLE"
+								action="#{employeeManagedBean.calisanGuncelle()}"
+							/>
+
+						</f:facet>	
+					</h:column>				
+				
+				</h:dataTable>
+				
+			</h:form>   
+			
+			
+			<br/><br/><br/>
+			<h:dataTable value="#{employeeManagedBean.calisanListesi}" var = "employee"
+				headerClass="anasayfa_tablo_baslik"
+				rowClasses="anasayfa_tekSatir, anasayfa_ciftSatir"
+				styleClass="anasayfa_tablo_stil"
+			>
+			
+			
+				<h:column>
+					<f:facet name="header">CALISAN GORSELI</f:facet>
+					
+					
+					<h:graphicImage
+						styleClass="employeeImageStyle"
+						value="/ResimWebHizmeti?id=#{employee.TC_no}"
+					/>
+					
+				</h:column>
+			
+				<h:column>
+					<f:facet name="header">CALISAN ID</f:facet>
+					#{employee.TC_no}
+				</h:column>
+			
+			
+				<h:column>
+					<f:facet name="header">ISIM</f:facet>
+					#{employee.isim}
+				</h:column>
+				
+				
+				<h:column>
+					<f:facet name="header">SOYISIM</f:facet>
+					#{employee.soyisim}
+				</h:column>
+				
+				
+				<h:column>
+					<f:facet name="header">MAAS</f:facet>
+					#{employee.maas}
+				</h:column>
+			
+			
+				<h:column>
+					<f:facet name="header">EKLENME TARIHI</f:facet>
+					#{employee.eklenmeTarihi}
+				</h:column>
+			
+			</h:dataTable>
+	
+	
+			<br/>
+			<h:form>
+			
+				<h:dataTable>
+				
+					<h:column>
+						<f:facet name="header">
+							
+							<h:commandButton 
+								value="PDF AL"
+								action="#{employeeManagedBean.pdfCikar}"
+							/>
+						
+						</f:facet>
+					
+					</h:column>
+					
+				</h:dataTable>
+			
+			</h:form>
+			
+		</div>
+		
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

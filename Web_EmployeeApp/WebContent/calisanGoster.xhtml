@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/sablon.xhtml">
+	
+	
+	<ui:define name="content">
+		
+		<div class = "div_anasayfa_icerik">
+			
+			
+			<h:outputText value="#{employeeManagedBean.infoMessage}"
+				rendered="#{not empty employeeManagedBean.infoMessage}"
+			/>
+			
+			<h:message for="calisanInputID_ekle"/>
+			<br/>
+			<h:message for="calisanInputID_sil"/>
+			<br/>
+			<h:message for="calisanInputID_guncelle"/>
+			<br/>
+			<h:message for="calisanInputResim"></h:message>
+			
+			
+			<h:dataTable value="#{employeeManagedBean.calisanListesi}" var = "employee"
+				headerClass="anasayfa_tablo_baslik"
+				rowClasses="anasayfa_tekSatir, anasayfa_ciftSatir"
+				styleClass="anasayfa_tablo_stil"
+			>
+			
+			
+				<h:column>
+					<f:facet name="header">CALISAN GORSELI</f:facet>
+					
+					
+					<h:graphicImage
+						styleClass="employeeImageStyle"
+						value="/ResimWebHizmeti?id=#{employee.TC_no}"
+					/>
+					
+				</h:column>
+			
+				<h:column>
+					<f:facet name="header">CALISAN ID</f:facet>
+					#{employee.TC_no}
+				</h:column>
+			
+			
+				<h:column>
+					<f:facet name="header">ISIM</f:facet>
+					#{employee.isim}
+				</h:column>
+				
+				
+				<h:column>
+					<f:facet name="header">SOYISIM</f:facet>
+					#{employee.soyisim}
+				</h:column>
+				
+				
+				<h:column>
+					<f:facet name="header">MAAS</f:facet>
+					#{employee.maas}
+				</h:column>
+			
+			
+				<h:column>
+					<f:facet name="header">EKLENME TARIHI</f:facet>
+					#{employee.eklenmeTarihi}
+				</h:column>
+			
+			</h:dataTable>
+	
+	
+		
+			
+		</div>
+		
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

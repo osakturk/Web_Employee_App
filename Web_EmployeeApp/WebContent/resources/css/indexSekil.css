@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+.div_indexContent li 
+{
+	display:inline-block;
+	padding-left: 25px;
+}
+.div_indexContent ul {
+	display: table;
+	
+	margin: 0 auto;
+	
+}
+
+

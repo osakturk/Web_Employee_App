@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/sablon.xhtml">
+	
+	
+	<ui:define name="content">
+		
+		<div class = "div_anasayfa_icerik">
+			
+			
+			<h:outputText value="#{employeeManagedBean.infoMessage}"
+				rendered="#{not empty employeeManagedBean.infoMessage}"
+			/>
+			
+			<h:message for="calisanInputID_ekle"/>
+			<br/>
+			<h:message for="calisanInputID_sil"/>
+			<br/>
+			<h:message for="calisanInputID_guncelle"/>
+			<br/>
+			<h:message for="calisanInputResim"></h:message>
+			
+			<h:form>	<!-- GUNCELLE BOLUMU -->
+				
+				ID ve guncellemek istediginiz alan/alanlari giriniz.
+				<h:dataTable>
+				
+					<h:column>
+						<f:facet name="header">
+						
+							TC NO
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeID}"
+								style= " width:100px"
+								id = "calisanInputID_guncelle"							
+							>
+								<f:validator validatorId="ID_validator"/>
+							</h:inputText>
+							
+						</f:facet>	
+					</h:column>		
+					
+					
+					<h:column>
+						<f:facet name="header">
+							ISIM
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeName}" 
+								style= " width:50px"
+							/>
+						</f:facet>
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							SOYISIM
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeSurname}" 
+								style= " width:80px"
+							/>
+						</f:facet>
+					</h:column>
+					
+					
+					<h:column>							
+						<f:facet name="header">
+							MAAS
+							<br/>
+							<h:inputText value="#{employeeManagedBean.employeeSalary}" 
+								style= " width:50px"
+							/>
+						</f:facet>	
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							<h:commandButton
+								value="GUNCELLE"
+								action="#{employeeManagedBean.calisanGuncelle()}"
+							/>
+
+						</f:facet>	
+					</h:column>				
+				
+				</h:dataTable>
+				
+			</h:form>   
+			
+		</div>
+		
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

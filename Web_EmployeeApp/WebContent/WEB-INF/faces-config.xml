@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+	<validator>
+		<display-name>ID_validator</display-name>
+		<validator-id>ID_validator</validator-id>
+		<validator-class>com.bilgeadam.hr.employees.gecerlilikler.IDGecerliligi</validator-class>
+	</validator>
+	<validator>
+		<description></description>
+		<display-name>Resim_validator</display-name>
+		<validator-id>resim_validator</validator-id>
+		<validator-class>com.bilgeadam.hr.employees.gecerlilikler.ResimGecerliligi</validator-class>
+	</validator>
+
+</faces-config>

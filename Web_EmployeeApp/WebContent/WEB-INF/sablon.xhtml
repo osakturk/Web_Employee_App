@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+>
+
+<h:head>
+  <title>
+  	<ui:insert name="title">HR - Calisan Web Uygulamasi</ui:insert>
+  </title>
+  
+  <h:outputStylesheet name="css/anasayfaSekil.css"/>
+  <h:outputStylesheet name="css/indexSekil.css"/>
+  
+</h:head>
+
+<body>
+<ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}"/>
+
+<div id="header">
+    <ui:insert name="header">
+    	
+    	<ui:include src="baslik.xhtml"/>
+    	
+    </ui:insert>
+</div>
+
+
+<div id="content">
+  <ui:insert name="content">
+    	
+  </ui:insert>
+</div>
+
+<div id="footer">
+  <ui:insert name="footer">
+    	
+    	<ui:include src="altBaslik.xhtml"/>
+    	
+  </ui:insert>
+</div>
+<script type="text/javascript">
+
+	function calisanEkle()
+	{
+		window.location = 'loginCalisanEkle.xhtml';
+	}
+	
+	function calisanSil()
+	{
+		window.location = 'loginCalisanSil.xhtml';
+
+	}
+	
+	function calisanGuncelle()
+	{
+	   	window.location = 'loginCalisanGuncelle.xhtml';
+
+	}
+	
+	function calisanGoster()
+	{
+		window.location = 'calisanGoster.xhtml';
+
+	}
+</script>
+</body>
+
+</html>
